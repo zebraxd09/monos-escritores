@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monos Escritores</title>
+    <link rel="icon" href=".\monos.ico" type="image/x-icon">
+</head>
+
+<body style="background-color: #d7d7d2;">
+
+    <h1 align="center">Taller de escritura de monos</h1>
+
+    <form action="./venta-boletos.php" method="post" target="_self">
+        <fieldset>
+            <legend>Selecciona la(s) palabras que quieras buscar</legend>
+
+            <label for="word-s">Palabra(s) a buscar:
+                <input type="text" id="word-s" name="word-s" required>
+            </label><br><br>
+
+            <label for="t-mode">Modo de texto:
+                <select id="t-mode" name="t-mode">
+                    <option value="tm-normal">Normal</option>
+                    <option value="tm-words">Palabras</option>
+                    <option value="tm-order">Orden</option>
+                </select>
+            </label><br><br>
+
+            <label for="time-zone">Zona horaria:
+                <select id="time-zone" name="time-zone">
+                    <option value="tz-NY">New York</option>
+                    <option value="tz-CDMX">Mexico City</option>
+                    <option value="tz-Br">Berlin</option>
+                </select>
+            </label><br><br>
+
+            <button type="reset">Borrar</button>
+            <button type="submit">Enviar</button>
+
+            <!-- <p><strong>Fecha de consulta de este libro: a las: en: </strong></p>
+            <p>Fecha de creación de este libro: </p> -->
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
