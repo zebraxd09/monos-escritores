@@ -13,9 +13,8 @@
         $t_mode=$_POST['t-mode'];
         $word_s=$_POST['word-s'];
         $time_zone=$_POST['time-zone'];
-        // var_dump($word_s);
-        // echo $word_s.'<br>';
-        $longitud=251-strlen($word_s);        
+        $word_s=explode(" ", $word_s);
+        $length_text=251-count($word_s);        
         echo '<table align="center" border="1" style="border-collapse:collapse; " cellpadding="30px">';
             echo '<thead>';
                 echo '<tr>';
@@ -44,34 +43,32 @@
             echo '<tbody align="center">';
                 echo '<tr>';
                     echo '<td>';
-                        for($i=0;$i<=$longitud;$i++) 
-                        { 
-                            $mayus=rand(65,90);
-                            $minus=rand(98,122);
-                            $decide=rand(1,3);
-                            switch($decide)
+                        $i_words=array();
+                        $all_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                        while(count($i_words)<$length_text) 
+                        {
+                            $length_word=rand(1,10);
+                            $word='';
+                            for($i=0;$i<$length_word;$i++) 
                             {
-                                case'1':
-                                    echo chr($mayus);
-                                    break;
-                                case'2':
-                                    echo chr($minus);
-                                    break;
-                                case'3':
-                                    echo chr(32);
-                                    break;
+                                $rand_i=rand(0,strlen($all_chars)-1);
+                                $rand_char=$all_chars[$rand_i];
+                                $word.=$rand_char;
                             }
+                            $i_words[]=$word;                            
+                        }                    
+                        $text=implode(" ",$i_words);
+                        echo $text;    
+                        switch($t_mode)
+                        {
+                            case'tm-normal':
+                                // normal();
+                                break;
+                            case'tm-words':
+                                break;
+                            case'tm-order':
+                                break;
                         }
-                        // switch($t_mode)
-                        // {
-                        //     case'tm-normal':
-                        //         // normal();
-                        //         break;
-                        //     case'tm-words':
-                        //         break;
-                        //     case'tm-order':
-                        //         break;
-                        // }
                     echo '</td>';
                 echo '</tr>';
             echo '</tbody>';
@@ -81,12 +78,15 @@
         {
             case'tz-NY':
                 $time_zone="Nueva York, USA";
+                date_default_timezone_set("America/New_York");
                 break;
             case'tz-CDMX':
                 $time_zone="CDMX, México";
+                date_default_timezone_set("America/Mexico_city");
                 break;
             case'tz-BE':
                 $time_zone="Berlin, Deutschland";
+                date_default_timezone_set("Europe/Berlin");
                 break;
         }
         //traduce la fecha al español
