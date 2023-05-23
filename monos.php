@@ -9,9 +9,6 @@
 
 <body align="center" style="background-color: #d7d7d2;">
     <?php
-        // $t_mode=(isset($_POST['t-mode']) && $_POST["t-mode"] != "")? $_POST['t-mode'] : "Falta Valor";
-        // $word_s=(isset($_POST['t_word-s']) && $_POST["t_word-s"] != "")? $_POST['t_word-s'] : "Falta Valor";
-        // $time_zone=(isset($_POST['time-zone']) && $_POST["time-zone"] != "")? $_POST['time-zone'] : "Falta Valor";
         $t_mode=$_POST['t-mode'];
         $word_s=$_POST['word-s'];
         $time_zone=$_POST['time-zone'];
@@ -80,6 +77,8 @@
                                 }
                                 break;
                             case'tm-words':
+                                $text=implode(" ", $i_words);
+                                shuffle($word_s);
                                 foreach($word_s as $valor)
                                 {                                                                                                                
                                         echo '<strong style="color:red";>'." ".$valor." ".'</strong>';
