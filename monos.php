@@ -9,15 +9,11 @@
 
 <body align="center" style="background-color: #d7d7d2;">
     <?php
-        $palabra=(isset($_POST['word-s']) && $_POST["word-s"] != "")? $_POST['word-s'] : "Falta Valor";   
         $t_mode=$_POST['t-mode'];
         $word_s=$_POST['word-s'];
         $time_zone=$_POST['time-zone'];
         $word_s=explode(" ", $word_s);
         $length_text=251-count($word_s);        
-        if( $t_mode = "tm-words"){
-            
-        }
         echo '<table align="center" border="1" style="border-collapse:collapse; " cellpadding="30px">';
             echo '<thead>';
                 echo '<tr>';
@@ -108,10 +104,6 @@
         $rand_fecha=$rand_dia.' '.date('j',$rand_time).' de '.$mes[date('n',$rand_time)].' de '.date('Y',$rand_time);
         echo '<p><strong>Fecha de consulta: '.$fecha.' a la(s) '.date("g:i A").' en '.$time_zone.'</strong></p>';
         echo '<p>Fecha de creación: '.$rand_fecha.'</p>';
-
-        
-
-
     ?>
 </body>
 
