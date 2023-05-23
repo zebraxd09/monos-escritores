@@ -80,11 +80,12 @@
                                 }
                                 break;
                             case'tm-words':
+                                $text = implode(" ", $i_words);
                                 foreach($word_s as $valor)
                                 {                                                                                                                
-                                        echo '<strong style="color:red";>'." ".$valor." ".'</strong>';
-                                        echo $text;     
-                                }                             
+                                        echo "<strong style='color:red';>$valor</strong>";                                                                            
+                                        echo $text;
+                                }                    
                                 break;
                             case'tm-disorder':
                                 shuffle($word_s);
