@@ -64,7 +64,12 @@
                             case'tm-normal':
                                 // normal();
                                 break;
-                            case'tm-words':
+                            case'tm-words':{
+                                foreach($word_s as $valor){                                                                                                                
+                                        echo "<strong style='color:red';>$valor</strong>";                                                                            
+                                        echo $text;
+                                        }
+                                }                             
                                 break;
                             case'tm-order':
                                 break;
