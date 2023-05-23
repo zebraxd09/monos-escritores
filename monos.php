@@ -114,6 +114,29 @@
                                         }
                                     }
                                     break;
+                                case 'tm-inverse':
+                                    $invertedArray=array();
+                                    foreach($word_s as $element)
+                                    {
+                                        $invertedElement=strrev($element);
+                                        $invertedArray[]=$invertedElement;
+                                    }
+                                    $finalArray=array_reverse($invertedArray);
+                                    $unidos=implode(" ", $finalArray);
+                                    array_push($i_words, $unidos);
+                                    shuffle($i_words);
+                                    foreach($i_words as $valor)
+                                    {
+                                        if($valor==$unidos)
+                                        {
+                                            echo '<strong style="color:red";>'.$valor." ".'</strong>';
+                                        }
+                                        else
+                                        {
+                                            echo $valor." ";
+                                        }
+                                    }
+                                    break;
                             }
                         echo '</td>';
                     echo '</tr>';
