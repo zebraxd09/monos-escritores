@@ -19,7 +19,7 @@
             echo '<thead>';
                 echo '<tr>';
                     echo '<th><strong>Libro número: ';
-                        for($i=1;$i<=10;$i++) 
+                    for($i=1;$i<=10;$i++) 
                         { 
                             $mayus=rand(65,90);
                             $minus=rand(98,122);
