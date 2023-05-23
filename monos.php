@@ -10,7 +10,7 @@
 <body align="center" style="background-color: #d7d7d2;">
     <?php
         // $t_mode=(isset($_POST['t-mode']) && $_POST["t-mode"] != "")? $_POST['t-mode'] : "Falta Valor";
-        // $word_s=(isset($_POST['word-s']) && $_POST["word-s"] != "")? $_POST['word-s'] : "Falta Valor";
+        // $word_s=(isset($_POST['t_word-s']) && $_POST["t_word-s"] != "")? $_POST['t_word-s'] : "Falta Valor";
         // $time_zone=(isset($_POST['time-zone']) && $_POST["time-zone"] != "")? $_POST['time-zone'] : "Falta Valor";
         $t_mode=$_POST['t-mode'];
         $word_s=$_POST['word-s'];
@@ -50,38 +50,58 @@
                         while(count($i_words)<$length_text) 
                         {    
                             $length_word=rand(1,10);
-                            $word='';
+                            $t_word='';
                             for($i=0;$i<$length_word;$i++) 
                             {
                                 $rand_i=rand(0,strlen($all_chars)-1);
                                 $rand_char=$all_chars[$rand_i];
-                                $word.=$rand_char;
+                                $t_word.=$rand_char;
                             }
-                            $i_words[]=$word;
+                            $i_words[]=$t_word;
                         }
-                        //ELIMINE ESTAS LINEAS, MAS ADELANTE LA AGREGO EN CASE, NO SE COMO LO VEN
                         // $text=implode(" ",$i_words);
-                        // echo $text;
+                        // var_dump($i_words);
                         switch($t_mode)
                         {
                             case'tm-normal':
-                                // normal();
+                                $unidos=implode(" ", $word_s);
+                                array_push($i_words, $unidos);
+                                shuffle($i_words);
+                                foreach($i_words as $valor)
+                                {
+                                    if($valor==$unidos)
+                                    {
+                                        echo '<strong style="color:red";>'.$valor." ".'</strong>';
+                                    }
+                                    else
+                                    {
+                                        echo $valor." ";
+                                    }
+                                }
                                 break;
-                            case'tm-words':{
+                            case'tm-words':
                                 $text = implode(" ", $i_words);
-                                foreach($word_s as $valor){                                                                                                                
+                                foreach($word_s as $valor)
+                                {                                                                                                                
                                         echo "<strong style='color:red';>$valor</strong>";                                                                            
                                         echo $text;
-                                        }
-                                }                             
+                                }                    
                                 break;
                             case'tm-disorder':
                                 shuffle($word_s);
                                 $unidos=implode(" ", $word_s);
                                 array_push($i_words, $unidos);
                                 shuffle($i_words);
-                                for($i=0; $i<count($i_words); $i++){
-                                    echo $i_words[$i]." ";
+                                foreach($i_words as $valor)
+                                {
+                                    if($valor==$unidos)
+                                    {
+                                        echo '<strong style="color:red";>'.$valor." ".'</strong>';
+                                    }
+                                    else
+                                    {
+                                        echo $valor." ";
+                                    }
                                 }
                                 break;
                         }
